@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+// Interanl Dependencies
+import MainPage from "./pages/MainPage";
+import TradingPage from "./pages/TradingPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="relative min-h-screen overflow-hidden bg-[#0D0415] space-y-10 pb-16">
+      <MainPage />
+      <TradingPage />
     </div>
   );
 }
