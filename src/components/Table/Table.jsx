@@ -32,7 +32,9 @@ const Table = ({ columns, data }) => {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, _index) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <th {...column.getHeaderProps()} className={"p-4"}>
+                  {column.render("Header")}
+                </th>
               ))}
             </tr>
           ))}
@@ -44,7 +46,9 @@ const Table = ({ columns, data }) => {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td {...cell.getCellProps()} className={"px-1 py-2"}>
+                      {cell.render("Cell")}
+                    </td>
                   );
                 })}
               </tr>
@@ -52,7 +56,7 @@ const Table = ({ columns, data }) => {
           })}
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="pagination mt-4 flex justify-around">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {"<<"}
         </button>{" "}
@@ -75,15 +79,16 @@ const Table = ({ columns, data }) => {
           | Go to page:{" "}
           <input
             type="number"
+            className="px-3 text-base bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out w-20 focus:text-gray-700 focus:bg-white focus:border-blue-700 focus:outline-none"
             defaultValue={pageIndex + 1}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               gotoPage(page);
             }}
-            style={{ width: "100px" }}
           />
         </span>{" "}
         <select
+          className="bg-gray-50 border border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500 w-24 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded"
           value={pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));
